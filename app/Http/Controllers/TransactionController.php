@@ -83,7 +83,7 @@ class TransactionController extends Controller
             ->value('balance') ?? 0;
 
         //Pengecekan jika saldo wallet adalah 0
-        if ($currentBalance == 0) {
+        if ($validated['type'] === 'pengeluaran' && $currentBalance == 0) {
             return redirect()->back()->withErrors([
                 'amount' => 'Anda tidak memiliki saldo pada dompet ini',
             ])->withInput();
